@@ -23,5 +23,5 @@ spec:
     name: flux-kube-state-metrics-config
     valuesKey: kube-state-metrics-config.yaml
   - kind: ConfigMap
-    name: flux-kube-prometheus-stack-values
+    name: kube-prometheus-stack-values
     valuesKey: values.yaml
