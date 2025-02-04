@@ -13,5 +13,5 @@ spec:
     crds: CreateReplace
   valuesFrom:
   - kind: ConfigMap
-    name: traefik-values
+    name: traefik-config
     valuesKey: values.yaml
