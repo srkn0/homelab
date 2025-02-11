@@ -2,15 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: monitoring-controllers
+  name: infrastructure-cert-manager
   namespace: flux-system
 spec:
-  interval: 1h
-  retryInterval: 2m
-  timeout: 10m
+  interval: 1m0s
   prune: true
   wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./monitoring/kube-prometheus-stack
+  path: ./infrastructure/cert-manager
