@@ -1,0 +1,27 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: homelab-secret-provisioners
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["secrets"]
+  verbs: ["get", "list", "create", "patch"]
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: homelab-secret-provisioners
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: homelab-secret-provisioners
+roleRef:
+  kind: Role
+  name: homelab-secret-provisioners
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: homelab-secret-provisioners
+# namespace field of ServiceAccount is added by kustomize. Yes, it is :)   . So there is no patch nedded.

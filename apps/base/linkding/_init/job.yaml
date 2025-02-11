@@ -1,0 +1,31 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-secret-for-linkding
+spec:
+  backoffLimit: 100
+  template:
+    spec:
+      serviceAccountName: homelab-secret-provisioners
+      restartPolicy: OnFailure
+      dnsPolicy: ClusterFirst
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: create-secret-via-kubectl
+        image: bitnami/kubectl
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /create-secret-via-kubectl.sh
+          name: homelab-init
+          subPath: create-secret-via-kubectl.sh
+        command:
+        - bash
+        - -e
+        args:
+        - /create-secret-via-kubectl.sh 
+      volumes:
+      - name: homelab-init
+        configMap:
+          defaultMode: 0755
+          name: homelab-init
