@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: linkdingc
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.178.180
+    metallb.universe.tf/loadBalancerIPs: 192.168.178.181
 spec:
   ports:
     - port: 3003
