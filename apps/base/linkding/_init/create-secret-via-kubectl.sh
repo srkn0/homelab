@@ -18,8 +18,8 @@ until kubectl get secret/"$SECRET_NAME" ; do
   echo "INFO: initially creating secret for LinkDing"
 
   kubectl create secret generic "$SECRET_NAME" \
-    --from-literal="BASIC_AUTH_USERNAME"="$USERNAME"\
-    --from-literal="BASIC_AUTH_PASSWORD"="$PASSWORD" \
+    --from-literal="LD_SUPERUSER_NAME"="$USERNAME"\
+    --from-literal="LD_SUPERUSER_PASSWORD"="$PASSWORD" \
     --field-manager "(basename $0)"
 
   kubectl annotate secret "$SECRET_NAME" \
