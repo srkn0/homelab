@@ -4,6 +4,7 @@ namespace: cert-manager
 resources:
   - repository.yaml
   - release.yaml
+  - namespace.yaml
 configMapGenerator:
   - name: cert-manager-config
     files:

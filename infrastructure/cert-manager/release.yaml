@@ -12,8 +12,6 @@ spec:
         kind: HelmRepository
         name: cert-manager
       interval: 5m
-  install:
-    createNamespace: true
   valuesFrom:
   - kind: ConfigMap
     name: cert-manager-config
