@@ -5,8 +5,9 @@ metadata:
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.178.181
 spec:
-  ports:
-    - port: 3003
+  type: LoadBalancer
   selector:
     app: linkding
-  type: ClusterIP
+  ports:
+    - port: 3003
+      targetPort: 3003
